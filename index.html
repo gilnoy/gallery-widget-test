@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- Google Tag Manager -->
+    <!--
+      <script>
+        (function(w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TK3LXB8');
+      </script>
+    -->
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Tag Manager (noscript) -->
+
+    <!-- End Google Tag Manager (noscript) -->
+  </head>
+
+  <body>
+    <!--
+      <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-TK3LXB8"
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        ></iframe
+      ></noscript>
+    -->
+
+    <div style="mmargin-left: 200px;mmargin-right: 100px;mmargin-top:400px;">
+      <div id="wrap" style="with: 500px;"></div>
+    </div>
+    <p></p>
+    <button id="update">Update Transformation</button>
+
+    <script>
+      const showEvents = false;
+
+      const options = {
+        id: 'myWidget',
+        container: '#wrap',
+        aspectRatio: '3:4',
+        logErrors: true,
+        //secureDistribution: 'resf',
+        cloudName: 'gilnoycloud',
+        analytics: true,
+        radius: 10,
+        zoomProps: {
+          showLens: true,
+          viewerPosition: 'inline',
+          viewerRadius: 10,
+          lensRadius: 10,
+        },
+
+        //zoom: false,
+        //skin: 'adidas',
+        //skin: 'ca',
+        //bgColor: 'red',
+        //carouselStyle: 'indicators',
+        placeholderImage: false,
+        // transformation: {
+        //   transformation: [
+        //     {
+        //       background: '#ff5252',
+        //       color: '#ffffff',
+        //       flags: 'text_no_trim',
+        //       angle: 35,
+        //       gravity: 'north_east',
+        //       overlay: {
+        //         radius: 'max',
+        //         x: 20,
+        //         y: 30,
+        //         fontFamily: 'Pacifico',
+        //         fontSize: 80,
+        //         text: '30%',
+        //       },
+        //     },
+        //   ],
+        // },
+        // transformation: {
+        //   crop: 'pad',
+        //   //effect: 'blackwhite',
+        //   //effect: 'red:50',
+        //   transformation: [
+        //     {
+        //       background: '#ff5252',
+        //       color: '#ffffff',
+        //       flags: 'text_no_trim',
+        //       angle: 35,
+        //       gravity: 'north_east',
+        //       overlay: {
+        //         radius: 'max',
+        //         x: 20,
+        //         y: 30,
+        //         fontFamily: 'Pacifico',
+        //         fontSize: 40,
+        //         text: '30%',
+        //       },
+        //     },
+
+        //     // {
+        //     //   //opacity: 50,
+        //     //   gravity: 'south_west',
+        //     //   width: 200,
+        //     //   crop: 'scale',
+        //     // },
+        //   ],
+        // },
+        // thumbnailProps: {
+        //   transformation: {
+        //     effect: 'blur:300',
+        //   },
+        // },
+        //skin: 'ca',
+        transition: 'slide',
+        //skin: 'ca',
+        aspectRatio: '1:1',
+        carouselLocation: 'right',
+        // themeProps: {
+        //   shape: 'square',
+        // },
+
+        //carouselOffset: 20,
+        // indicatorProps: {
+        //   //selectedColor: 'green',
+        //   color: 'red',
+        //   //shape: 'square',
+        //   size: 30,
+        // },
+        thumbnailProps: {
+          //   //navigateOnHover: true,
+          //   //    spacing: 20,
+          //   gutter: 0,
+          navigationColor: 'green',
+          width: 100,
+          height: 100,
+          //   //borderColor: 'green',
+          //   //borderWidth: 2,
+          //   navigationColor: 'red',
+          //   navigationIconColor: 'yellow',
+          //   mediaSymbolBgShape: 'none',
+          //   mediaSymbolBgColor: 'red',
+          //   mediaSymbolIconColor: 'yellow',
+          //   mediaSymbolPosition: 'top-left',
+          //   mediaSymbolSize: 16,
+          //   //selectedBorderColor: 'red',
+          //   selectedBorderWidth: 10,
+          //   selectedGradientStart: 'red',
+          //   selectedGradientEnd: 'blue',
+          //   selectedGradientDirection: 'vertical',
+          //   selectedStyle: 'all',
+          //   //   transformation: {
+          //   //     transformation: [
+          //   //       {
+          //   //         overlay: {
+          //   //           fontFamily: 'Arial',
+          //   //           fontSize: 10,
+          //   //           text: 'summer SALE!',
+          //   //         },
+          //   //       },
+          //   //       {
+          //   //         overlay: {
+          //   //           fontFamily: 'Arial',
+          //   //           fontSize: 20,
+          //   //           text: 'another sale',
+          //   //         },
+          //   //       },
+          //   //     ],
+          //   // },
+          // },
+          // zoomProps: {
+          //   level: 3,
+        },
+        navigation: 'always',
+        //navigationShape: 'diamond',
+        mediaAssets: [
+          // {
+          //   tag: 'chair-360',
+          //   mediaType: '360',
+          //   transformation: {
+          //     effect: 'blackwhite',
+          //   },
+          // },
+          // {
+          //   tag: 'trainers',
+          //   mediaType: '360',
+          // },
+          'gallery-widget/1060110_mrp_cu_xl_r6spub',
+          //'gallery-widget/1060110_mrp_bk_xl_sjf2i9',
+          //{publicId: 'opener', mediaType: 'video', resourceType: 'image'},
+          {
+            tag: 'gallery2',
+          },
+          //{tag: '3d'},
+          // {tag: 'adidas-skin', mediaType: 'image'},
+          //{tag: 'ca-demo'},
+          // {
+          //   tag: 'video',
+          //   mediaType: 'video',
+          // },
+          // {tag: 'adidas', mediaType: 'video'},
+          // {
+          //   publicId: 'gallery-widget/1060110_mrp_cu_xl_r6spub',
+          //   mediaType: 'image',
+          //   resourceType: 'image',
+          // },
+          // {
+          //   publicId: 'gallery-widget/1060110_mrp_bk_xl_sjf2i9',
+          //   mediaType: 'image',
+          //   resourceType: 'image',
+          //   transformation: {
+          //     angle: 90
+          //   }
+          // },
+          // },
+        ],
+        //imageBreakpoint: 100,
+        //viewportBreakpoints: [],
+        // carouselLocation: 'bottom',
+        // carouselStyle: 'thumbnails',
+        // thumbnailProps: {
+        //   width: 100,
+        //   height: 100,
+        //   mediaSymbolPosition: 'top-right',
+        //   mediaSymbolBgShape: 'none',
+        //   mediaSymbolShadow: true,
+        // },
+        // indicatorProps: {
+        //   //  selectedColor: 'red',
+        //   color: 'brown',
+        //   //  shape: 'radius',
+        //   //  size: 14,
+        // },
+        //bgColor: '#EEE',
+        // debug: 'true',
+        // carouselOffset: 0,
+        // navigation: 'mouseover'
+        videoProps: {
+          controls: false,
+        },
+      };
+
+      const myWidget = cloudinary.galleryWidget(options);
+
+      myWidget.render();
+
+      document.getElementById('update').addEventListener('click', () => {
+        myWidget.update({
+          thumbnailProps: {
+            // width: 200,
+            // height: 200,
+            transformation: {
+              effect: 'replace_color:maroon:80:2b38aa',
+            },
+          },
+          transformation: {
+            effect: 'replace_color:maroon:80:2b38aa',
+            effect: 'blur:500',
+          },
+        });
+      });
+
+      // document.getElementById('destroy').addEventListener('click', () => {
+      //   //cloudinary.galleryWidget(
+      //   myWidget.update(
+      //     Object.assign(options, {
+      //       transformation: {
+      //         effect: 'replace_color:maroon:80:2b38aa',
+      //       },
+      //     })
+      //   );
+
+      //   //myWidget1.render();
+      // });
+      // setTimeout(() => {
+      //   myWidget.update({
+      //     thumbnailProps: {
+      //       width: 20,
+      //       height: 20,
+      //     },
+      //   });
+      // }, 3000);
+
+      // setTimeout(() => {
+      //   myWidget.update({
+      //     aspectRatio: '1:1'
+      //   })
+      // }, 5000)
+
+      if (showEvents) {
+        myWidget.on('nextasset', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('prevasset', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('mouseenter', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('mouseleave', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('thumbnailclick', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('thumbnailhover', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('thumbnailnext', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('thumbnailprev', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('zoomin', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('zoomout', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('360start', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('videostart', data => {
+          console.log(data.name, data);
+        });
+
+        myWidget.on('videopause', data => {
+          console.log(data.name, data);
+        });
+      }
+
+      // myWidget.on('videostart', data => {
+      //   console.log(data.name, data);
+      // });
+
+      // myWidget.on('videopause', data => {
+      //   console.log(data.name, data);
+      // });
+    </script>
+  </body>
+</html>
